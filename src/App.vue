@@ -20,6 +20,9 @@ export default {
     BgmHeader,
     BgmTop,
     BgmTable
+  },
+  created () {
+    this.$store.dispatch('getBangumiData')
   }
 }
 </script>
