@@ -13,13 +13,20 @@
   </div>
 </template>
 <script charset="utf-8">
+import _ from 'lodash'
 export default {
   name: 'bgm-top',
+  computed: {
+    count () {
+      const currentBangumiData = this.$store.state.currentBangumiData
+      if (currentBangumiData) return _.keys(currentBangumiData).length
+      return 0
+    }
+  },
   data () {
     return {
       year: 2017,
-      month: 7,
-      count: 20
+      month: 7
     }
   }
 }

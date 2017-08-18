@@ -1,11 +1,12 @@
 <template>
   <div class="table-left selector">
     <ol>
-      <li v-for="tab in tabs" :key="tab.key">
-        <a href="#"
-          :data-tab="tab.key"
-          :data-name="tab.name"
-          >
+      <li v-for="tab in tabs"
+        :key="tab.key"
+        :class="getTabClass(tab.key)"
+        @click.prevent="switchTab(tab.key)"
+        >
+        <a href="#">
           {{new Date().getDay() === tab.key ? '今天' : tab.name}}
         </a>
       </li>
@@ -13,8 +14,19 @@
   </div>
 </template>
 <script charset="utf-8">
+import * as types from '../store/mutation-types.js'
 export default {
   name: 'table-selector',
+  methods: {
+    getTabClass (key) {
+      if (key === this.$store.state.activeTab) {
+        return 'cur'
+      }
+    },
+    switchTab (key) {
+      this.$store.commit(types.SWITCH_TAB, {key})
+    }
+  },
   data () {
     return {
       tabs: [

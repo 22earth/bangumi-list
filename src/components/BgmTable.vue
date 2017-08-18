@@ -8,7 +8,6 @@
         <div class="table-right">
           <div class="table-header-info">
             <div class="title">
-              <label htmlFor="selectorToggle">{state.tabName}</label>
               <span>作品名</span>
             </div>
             <div class="time-jp">日本放送</div>
@@ -16,33 +15,43 @@
               <span class="m-hide">大陆放送</span>
               <span class="m-show">放送时间</span>
             </div>
-            <div class="sites">
-              放送站点
-            </div>
+            <div class="sites">放送站点</div>
           </div>
         </div>
       </div>
       <div class="table-container">
-        <input id="selectorToggle" type="checkbox" class="toggle-input" />
         <table-selector></table-selector>
-        <bgm-list></bgm-list>
+        <div
+          class="table-right data-list"
+          v-if="bangumiList.length"
+          >
+          <ul>
+            <bgm-list-item
+              v-for="bangumi in bangumiList"
+              :key="bangumi.id"
+              :item="bangumi"
+              >
+            </bgm-list-item>
+            <li class="empty-item" v-if="bangumiList.length < 5"></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script charset="utf-8">
 import TableSelector from './TableSelector.vue'
-import BgmList from './BgmList.vue'
+import BgmListItem from './BgmListItem.vue'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'bgm-table',
   components: {
     TableSelector,
-    BgmList
+    BgmListItem
   },
-  data () {
-    return {
-
-    }
+  computed: {
+    ...mapGetters(['bangumiList'])
   }
 }
 </script>
