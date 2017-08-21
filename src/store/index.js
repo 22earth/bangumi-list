@@ -23,6 +23,7 @@ const state = {
     'movie': { name: '迅雷', enable: true },
     'mgtv': { name: '芒果', enable: true }
   },
+  isHistory: false,
   activeTab: new Date().getDay(),
   showSetting: false,
   currentBangumiData: null
