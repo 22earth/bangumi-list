@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   queryText: '',
-  config: {'newOnly': false, 'highlightOnly': false, 'noAutoSwitch': false, 'disableNewTab': false, 'jpTitle': false, 'dayDivide': 24, 'dayDivideMax': 24, 'dayDivideMin': 5, 'bangumiDomain': 'bangumi.tv'},
+  config: {'newOnly': false, 'highlightOnly': false, 'noAutoSwitch': false, 'disableNewTab': false, 'jpTitle': false, 'dayDivide': 24, 'bangumiDomain': 'bangumi.tv'},
   bangumiListSites: {
     'acfun': { name: 'A站', enable: true },
     'bilibili': { name: 'B站', enable: true },
@@ -23,6 +23,8 @@ const state = {
     'movie': { name: '迅雷', enable: true },
     'mgtv': { name: '芒果', enable: true }
   },
+  dayDivideMax: 24,
+  dayDivideMin: 5,
   isHistory: false,
   activeTab: new Date().getDay(),
   showSetting: false,

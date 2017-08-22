@@ -1,4 +1,5 @@
 import * as types from './mutation-types.js'
+import _ from 'lodash'
 const mutations = {
   [types.QUERY_BANGUMI] (state, payload) {
     state.queryText = payload.queryText
@@ -12,6 +13,33 @@ const mutations = {
   },
   [types.SWITCH_TAB] (state, payload) {
     state.activeTab = payload.key
+  },
+  [types.TOGGLE_SETTING] (state, payload) {
+    if (payload && typeof payload.showSetting !== 'undefined') {
+      state.showSetting = payload.showSetting
+    } else {
+      state.showSetting = !state.showSetting
+    }
+  },
+  [types.TOGGLE_BANGUMI_LIST_SITE] (state, payload) {
+    const sites = _.cloneDeep(state.bangumiListSites)
+    if (payload.id && sites[payload.id]) {
+      sites[payload.id].enable = payload.enable
+      state.bangumiListSites = sites
+    } else if (payload.all) {
+      let s = {}
+      _.forEach(sites, (value, key) => {
+        value.enable = payload.enable
+        s[key] = value
+      })
+      state.bangumiListSites = s
+    }
+  },
+  [types.CHANGE_CONFIG] (state, payload) {
+    state.config = _.assign(state.config, payload)
+  },
+  [types.RESET_CONFIG] (state) {
+    state.config = {'newOnly': false, 'highlightOnly': false, 'noAutoSwitch': false, 'disableNewTab': false, 'jpTitle': false, 'dayDivide': 24, 'bangumiDomain': 'bangumi.tv'}
   }
 }
 

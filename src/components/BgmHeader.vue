@@ -3,9 +3,10 @@
     <div class="inner">
       <h1><a href="/">番组放送</a></h1>
       <ul class="header-nav nav-left">
+        <drop-menu></drop-menu>
         <li>
           <a
-            href="m&#97;i&#108;t&#111;:&#119;xt&#50;&#48;&#48;&#53;@gma&#105;l&#46;&#99;&#111;&#109;?subject=%e7%95%aa%e7%bb%84%e6%94%be%e9%80%81-%e9%94%99%e8%af%af%e6%8f%90%e4%ba%a4"
+            href="mailto:wxt2005@gmail.com?subject=%e7%95%aa%e7%bb%84%e6%94%be%e9%80%81-%e9%94%99%e8%af%af%e6%8f%90%e4%ba%a4"
             title="如果您发现数据错误，或者其它问题，请联系我">提交问题</a>
         </li>
       </ul>
@@ -24,7 +25,11 @@
   </header>
 </template>
 <script charset="utf-8">
+import DropMenu from './DropMenu.vue'
 export default {
-  name: 'bgm-header'
+  name: 'bgm-header',
+  components: {
+    DropMenu
+  }
 }
 </script>

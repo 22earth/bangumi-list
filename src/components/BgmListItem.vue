@@ -1,5 +1,5 @@
 <template>
-  <li :class="{expanded: showSub}">
+  <li :class="{expanded: showSub, new: item.newBgm}">
     <div class="item-scroller">
       <div class="item-main" @click="toggleSub">
         <div class="title">
@@ -23,7 +23,8 @@
             <li :key="site.id" v-for="site in getSiteList">
               <a
                 :href="site.url"
-                target="_blank"
+                :target="disableNewTab ? '' : '_blank'"
+                @click.stop=""
                 >{{site.name}}</a>
             </li>
           </ul>
@@ -46,7 +47,6 @@ export default {
   name: 'bgm-list-item',
   data () {
     return {
-      className: '',
       showSub: false
     }
   },
@@ -66,6 +66,9 @@ export default {
           url
         }
       }).filter((site) => site.enable)
+    },
+    disableNewTab () {
+      return this.$store.state.disableNewTab
     },
     showJpTitle () {
       return this.$store.state.config.jpTitle

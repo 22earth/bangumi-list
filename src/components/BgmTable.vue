@@ -3,7 +3,7 @@
     <div class="inner table">
       <div class="table-header">
         <div class="table-left">
-          <a href="#" class="setting-btn" @click="window.alert('ttt')">设置</a>
+          <a href="#" class="setting-btn" @click="showSetting">设置</a>
         </div>
         <div class="table-right">
           <div class="table-header-info">
@@ -21,11 +21,8 @@
       </div>
       <div class="table-container">
         <table-selector></table-selector>
-        <div
-          class="table-right data-list"
-          v-if="bangumiList.length"
-          >
-          <ul>
+        <div class="table-right data-list">
+          <ul v-if="bangumiList.length">
             <bgm-list-item
               v-for="bangumi in bangumiList"
               :key="bangumi.id"
@@ -34,7 +31,11 @@
             </bgm-list-item>
             <li class="empty-item" v-if="bangumiList.length < 5"></li>
           </ul>
+          <ul v-else>
+            <li class="empty-item"></li>
+          </ul>
         </div>
+        <bgm-preferences></bgm-preferences>
       </div>
     </div>
   </div>
@@ -42,16 +43,29 @@
 <script charset="utf-8">
 import TableSelector from './TableSelector.vue'
 import BgmListItem from './BgmListItem.vue'
+import BgmPreferences from './BgmPreferences.vue'
+import * as types from '../store/mutation-types.js'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'bgm-table',
+  data () {
+    return {
+      show: false
+    }
+  },
   components: {
     TableSelector,
-    BgmListItem
+    BgmListItem,
+    BgmPreferences
   },
   computed: {
     ...mapGetters(['bangumiList'])
+  },
+  methods: {
+    showSetting () {
+      this.$store.commit(types.TOGGLE_SETTING, { showSetting: true })
+    }
   }
 }
 </script>
