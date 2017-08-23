@@ -3,7 +3,7 @@
     <div class="inner">
       <h1><a href="/">番组放送</a></h1>
       <ul class="header-nav nav-left">
-        <drop-menu></drop-menu>
+        <drop-menu :items="items" name="历史数据"></drop-menu>
         <li>
           <a
             href="mailto:wxt2005@gmail.com?subject=%e7%95%aa%e7%bb%84%e6%94%be%e9%80%81-%e9%94%99%e8%af%af%e6%8f%90%e4%ba%a4"
@@ -28,6 +28,34 @@
 import DropMenu from './DropMenu.vue'
 export default {
   name: 'bgm-header',
+  data () {
+    return {
+      items: {
+        2017: {
+          10: {
+            path: 'foo',
+            version: '22222'
+          }
+        },
+        2016: {
+          10: {
+            path: 'foo',
+            version: '22222'
+          }
+        },
+        2015: {
+          10: {
+            path: 'foo',
+            version: '22222'
+          },
+          7: {
+            path: 'foo',
+            version: '22222'
+          }
+        }
+      }
+    }
+  },
   components: {
     DropMenu
   }

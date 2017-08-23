@@ -141,85 +141,7 @@ header {
             }
         }
 
-        .drop {
-            position: relative;
-
-            & > a:after {
-                content: " ";
-                width: 0;
-                height: 0;
-                border-style: solid;
-                border-width: 6px;
-                border-color: #fff transparent transparent transparent;
-                display: inline-block;
-                position: relative;
-                top: 0.3rem;
-                margin-left: 8px;
-                .transition(border-color 0.3s ease);
-            }
-
-            & > a:hover:after {
-                border-top-color: @main-green;
-            }
-
-            .show {
-                display: block;
-            }
-        }
     }
-
-    .drop-menu {
-        position: absolute;
-        background: @main-blue;
-        top: 150%;
-        left: 2%;
-        border-radius: 4px;
-        display: none;
-        z-index: 10;
-
-        &:before {
-            content: " ";
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 8px;
-            border-color: transparent transparent @main-blue transparent;
-            display: block;
-            position: absolute;
-            top: -16px;
-            left: 15px;
-        }
-
-        li {
-            padding-top: 0;
-            position: relative;
-        }
-
-        a {
-            text-align: center;
-            padding: 10px 0;
-            width: 8rem;
-            display: block;
-            border-radius: 2px;
-            margin: 2px;
-
-            &:hover {
-                background: @main-green;
-                color: inherit;
-                .transition(background-color 0.3s ease);
-            }
-        }
-
-        .sub-menu {
-            position: absolute;
-            left: 104%;
-            top: 0;
-            background: @main-blue;
-            border-radius: 4px;
-            display: none;
-        }
-    }
-
 
 
     @media (max-width: @min-width) {
@@ -242,21 +164,6 @@ header {
                     margin-right: 0;
                     margin-left: 4%;
                     padding-top: 10px;
-                }
-            }
-
-            .drop-menu {
-                left: auto;
-                right: 2%;
-
-                a {
-                    width: 6rem;
-                    padding: 8px 0;
-                }
-
-                .sub-menu {
-                    right: 104%;
-                    left: auto;
                 }
             }
         }
@@ -764,12 +671,12 @@ header {
                 }
 
                 .sub-middle {
-                    width: 46%;
+                    width: 44%;
                     padding-left: 2%;
                 }
 
                 .sub-right {
-                    width: 8%;
+                    width: 10%;
                 }
 
                 p {
