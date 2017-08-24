@@ -1,14 +1,20 @@
 <template>
-  <li class="drop">
+  <li class="drop"
+    @click="toggleMenu"
+    >
     <a href="#">{{name}}</a>
-    <div class="drop-menu" :class="{show: showMenu}">
+    <div class="drop-menu"
+      :class="{show: showMenu}">
       <ul>
         <li v-for="(item, key) in items"
           :key="key"
           :data-key="key"
+          @mouseover="changeActiveListKey(key)"
           >
           <a href="#">{{key + '年'}}</a>
-          <ul class="sub-menu">
+          <ul class="sub-menu"
+            :class="{show: showSubMenu(key)}"
+            >
             <li v-for="(subItem, subKey) in item"
               :key="subKey"
               >
@@ -28,11 +34,22 @@ export default {
   name: 'drop-menu',
   data () {
     return {
-      showMenu: false
+      showMenu: false,
+      activeListKey: undefined
     }
   },
   methods: {
-    showSubMenu (e) {
+    toggleMenu (e) {
+      this.showMenu = !this.showMenu
+      if (!this.showMenu) {
+        this.activeListKey = undefined
+      }
+    },
+    showSubMenu (key) {
+      if (key === this.activeListKey) return true
+    },
+    changeActiveListKey (key) {
+      this.activeListKey = key
     }
   },
   props: {
