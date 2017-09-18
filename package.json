@@ -1,8 +1,8 @@
 {
-  "name": "my-demo-vue-webpack",
+  "name": "bangumi-list",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "yangjingkun <yangjingkun@cmiot.chinamobile.com>",
+  "author": "22earth <zhifengle@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
