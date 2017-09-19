@@ -28,11 +28,15 @@
     </div>
     <div class="sub-right">
       <p>
-        <input type="checkbox" :id="'highlight_' + item.id">
+        <input
+        @change="handleCheckBox"
+        type="checkbox" :checked="item.highlight" :id="'highlight_' + item.id">
         <label :for="'highlight_' + item.id">关注</label>
       </p>
       <p>
-        <input type="checkbox" :id="'hide_' + item.id">
+        <input
+        @change="handleCheckBox"
+        type="checkbox" :checked="item.hide" :id="'hide_' + item.id">
         <label :for="'hide_' + item.id">隐藏</label>
       </p>
     </div>
@@ -40,9 +44,21 @@
 </template>
 <script charset="utf-8">
 import _ from 'lodash'
+import * as types from '../store/mutation-types.js'
 export default {
   name: 'bgm-item-sub',
   props: ['item'],
+  methods: {
+    handleCheckBox (e) {
+      let property = e.target.id.split('_')[0]
+      this.$store.commit(types.CHANGE_BANGUMI_DATA, {
+        id: this.item.id,
+        data: {
+          [property]: e.target.checked
+        }
+      })
+    }
+  },
   computed: {
     bangumiURL () {
       const bangumiDomain = null

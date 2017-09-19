@@ -1,5 +1,5 @@
 <template>
-  <li :class="{expanded: showSub, new: item.newBgm}">
+  <li :class="{expanded: showSub, new: item.newBgm, 'data-highlight': item.highlight}">
     <div class="item-scroller">
       <div class="item-main" @click="toggleSub">
         <div class="title">

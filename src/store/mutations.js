@@ -40,6 +40,12 @@ const mutations = {
   },
   [types.RESET_CONFIG] (state) {
     state.config = {'newOnly': false, 'highlightOnly': false, 'noAutoSwitch': false, 'disableNewTab': false, 'jpTitle': false, 'dayDivide': 24, 'bangumiDomain': 'bangumi.tv'}
+  },
+  [types.CHANGE_BANGUMI_DATA] (state, payload) {
+    let bangumiData = _.cloneDeep(state.currentBangumiData)
+    let target = bangumiData[payload.id]
+    _.assign(target, payload.data)
+    state.currentBangumiData = bangumiData
   }
 }
 
