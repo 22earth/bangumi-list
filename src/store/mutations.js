@@ -46,6 +46,13 @@ const mutations = {
     let target = bangumiData[payload.id]
     _.assign(target, payload.data)
     state.currentBangumiData = bangumiData
+  },
+  [types.TOGGLE_DIALOG] (state, payload) {
+    if (payload && typeof payload.showDialog !== 'undefined') {
+      state.dialog.show = payload.showDialog
+    } else {
+      state.dialog.show = !state.dialog.show
+    }
   }
 }
 

@@ -28,7 +28,12 @@ const state = {
   isHistory: false,
   activeTab: new Date().getDay(),
   showSetting: false,
-  currentBangumiData: null
+  currentBangumiData: null,
+  dialog: {
+    type: 'warning',
+    content: '重置不仅会清除您的设置，还会清除您对作品的关注/隐藏记录，请问您确定要重置吗？',
+    show: false
+  }
 }
 
 export default new Vuex.Store({

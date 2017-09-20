@@ -59,7 +59,7 @@
         </div>
       </div>
       <a href="#" class="setting-confirm" @click.prevent="hideSetting">确定</a>
-      <a href="#" class="setting-reset" @click.prevent="resetConfig">重置</a>
+      <a href="#" class="setting-reset" @click.prevent="showDialog">重置</a>
     </div>
   </div>
 </template>
@@ -99,8 +99,8 @@ export default {
     hideSetting () {
       this.$store.commit(types.TOGGLE_SETTING, { showSetting: false })
     },
-    resetConfig () {
-      this.$store.commit(types.RESET_CONFIG)
+    showDialog () {
+      this.$store.commit(types.TOGGLE_DIALOG, { showDialog: true })
     },
     changeConfig (e) {
       if (e.target.type === 'checkbox') {

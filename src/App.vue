@@ -3,6 +3,7 @@
     <bgm-header></bgm-header>
     <bgm-top></bgm-top>
     <bgm-table></bgm-table>
+    <bgm-dialog></bgm-dialog>
     <footer>
       <p class="inner">©2014 - 2017&nbsp;&nbsp;番组放送 | <a href="https://github.com/wxt2005/bangumi-list" title="欢迎提出宝贵的意见">Github 项目地址</a></p>
     </footer>
@@ -11,6 +12,7 @@
 
 <script>
 import BgmHeader from './components/BgmHeader.vue'
+import BgmDialog from './components/BgmDialog.vue'
 import BgmTop from './components/BgmTop.vue'
 import BgmTable from './components/BgmTable.vue'
 
@@ -19,7 +21,8 @@ export default {
   components: {
     BgmHeader,
     BgmTop,
-    BgmTable
+    BgmTable,
+    BgmDialog
   },
   created () {
     this.$store.dispatch('getBangumiData')
