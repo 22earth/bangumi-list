@@ -24,7 +24,6 @@
               <a
                 :href="site.url"
                 :target="disableNewTab ? '' : '_blank'"
-                @click.stop=""
                 >{{site.name}}</a>
             </li>
           </ul>

@@ -10,6 +10,7 @@
         <span class="sub-title">下载：</span>
         <a v-for="site in downloadSites"
           :href="site.url"
+          :key="site.id"
           :target="disableNewTab ? '' : '_blank'"
           >
           {{site.name}}

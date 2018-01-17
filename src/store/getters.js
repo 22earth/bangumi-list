@@ -42,7 +42,7 @@ const getters = {
         var showHour = +(useCNTime ? item.timeCN : item.timeJP).slice(0, 2)
         // 选中周天
         if (item.weekDayCN === tab) {
-            // 日期分割之后的不显示
+        // 日期分割之后的不显示
           if (showHour >= state.config.dayDivide) {
             return false
             // 其余显示
@@ -53,7 +53,7 @@ const getters = {
 
         // 选中的前一天
         if (tab - item.weekDayCN === 1 || tab - item.weekDayCN === -6) {
-            // 日期分割之前的不显示
+        // 日期分割之前的不显示
           if (showHour < state.config.dayDivide) {
             return false
             // 其余显示
@@ -61,7 +61,7 @@ const getters = {
             return true
           }
         } else {
-            // 其它周天直接不显示
+        // 其它周天直接不显示
           return false
         }
         /*
