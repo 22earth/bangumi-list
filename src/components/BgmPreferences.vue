@@ -59,6 +59,8 @@
         </div>
       </div>
       <a href="#" class="setting-confirm" @click.prevent="hideSetting">确定</a>
+      <a href="#" class="setting-confirm" @click.prevent="exportSetting">导出</a>
+      <a href="#" class="setting-confirm" @click.prevent="importSetting">导入</a>
       <a href="#" class="setting-reset" @click.prevent="showDialog">重置</a>
     </div>
   </div>
@@ -72,7 +74,8 @@ export default {
   name: 'bgm-preferences',
   data () {
     return {
-      selectAllSites: false
+      selectAllSites: false,
+      blobURL: '#'
     }
   },
   components: { CheckBoxItem },
@@ -97,6 +100,35 @@ export default {
   },
   methods: {
     hideSetting () {
+      this.$store.commit(types.TOGGLE_SETTING, { showSetting: false })
+    },
+    importSetting () {
+      this.$store.commit(types.TOGGLE_SETTING, { showSetting: false })
+    },
+    exportSetting (e) {
+      e.preventDefault()
+      var data = this.$store.state
+      // dn = this.refs.exportSetting.getDOMNode()
+      var blob = new Blob(
+        [JSON.stringify(_.assign({}, {
+          config: data.config,
+          // supportSites: data.supportSites,
+          data: {
+            // path: data.path,
+            // version: data.version,
+            items: _.pickBy(data.currentBangumiData, function (val, key) {
+              return val.hide || val.highlight
+            })
+          }
+        }))],
+        {type: 'application/json'}
+      )
+      var $a = document.createElement('a')
+      $a.href = URL.createObjectURL(blob)
+      $a.target = '_blank'
+      $a.download = 'bgmlist-setting.json'
+      $a.click()
+
       this.$store.commit(types.TOGGLE_SETTING, { showSetting: false })
     },
     showDialog () {

@@ -53,6 +53,10 @@ const mutations = {
     } else {
       state.dialog.show = !state.dialog.show
     }
+  },
+  [types.IMPORT_SETTING] (state, payload) {
+    // @TODO
+
   }
 }
 
